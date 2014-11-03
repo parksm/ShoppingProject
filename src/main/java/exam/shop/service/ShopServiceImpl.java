@@ -20,7 +20,10 @@ public class ShopServiceImpl implements ShopService {
 		
 		return list;
 	}
-
+	public void setUserCatalog(UserCatalog userCatalog) {
+		this.userCatalog = userCatalog;
+	}
+	
 	@Override
 	public Item getItemByItemId(int itemId) {
 		System.out.println("Service");
@@ -31,14 +34,12 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public User getUserByUserId(String UserId, String userPwd) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void registerUser(User user) {
-		// TODO Auto-generated method stub
-		
+		userCatalog.registerUser(user);
 	}
 
 }

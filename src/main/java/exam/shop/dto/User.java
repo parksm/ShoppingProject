@@ -1,9 +1,20 @@
 package exam.shop.dto;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class User {
+	@NotEmpty
 	private String userId;
 	private String userPwd;
+	@Size(min=4,max=10)
 	private String userName;
+	
+	public User()
+	{
+		
+	}
 
 	public User(String userId, String userPwd,String userName) {
 		this.userId = userId;

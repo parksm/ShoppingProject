@@ -37,7 +37,7 @@ create table order_detail
 )
 
 select * from items
-
+select * from users
 
 
 
