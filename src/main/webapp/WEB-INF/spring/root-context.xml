@@ -15,9 +15,10 @@
 		driver.
 	-->
 	<!-- MessageSource -->
-	<bean id="messageSourec" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages"/>
 	</bean>
+	
 	<bean id="dataSource"
 		  class="org.apache.commons.dbcp.BasicDataSource"
 		  p:driverClassName="oracle.jdbc.driver.OracleDriver"
@@ -28,8 +29,18 @@
 	<bean id="jdbcTemplate"
 		  class="org.springframework.jdbc.core.JdbcTemplate"
 		  p:dataSource-ref="dataSource" /> 
+		  
+	<!-- MyBatis -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="/WEB-INF/spring/mybatis/mybatis-config.xml"/>	
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"/>
+	</bean>
 	<!-- Item -->
-	<bean id="itemDAOImpl" 
+	<!-- <bean id="itemDAOImpl" 
 		  class="exam.shop.dao.ItemDAOImpl"
 		  p:jdbcTemplate-ref="jdbcTemplate" />
 	
@@ -37,7 +48,7 @@
 		  class="exam.shop.service.ItemCatalogImpl"
 		  p:itemDAOImpl-ref="itemDAOImpl"/>
 		  
-	<!-- User -->
+	User
 	<bean id="userDAOImpl" 
 		  class="exam.shop.dao.UserDAOImpl"
 		  p:jdbcTemplate-ref="jdbcTemplate" />
@@ -53,7 +64,7 @@
 	 	  
 	<bean id="itemController"
 		  class="exam.shop.controller.ItemController"
-	 	  p:shopService-ref="shopService" />
+	 	  p:shopService-ref="shopService" /> -->
 	
 	
 	

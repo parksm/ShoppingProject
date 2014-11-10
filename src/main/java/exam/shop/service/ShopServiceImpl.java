@@ -2,10 +2,16 @@ package exam.shop.service;
 
 import java.util.*;
 
-import exam.shop.dto.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import exam.shop.dto.*;
+@Component
 public class ShopServiceImpl implements ShopService {
+	
+	@Autowired
 	private ItemCatalog itemCatalog;
+	@Autowired
 	private UserCatalog userCatalog;
 	
 	public void setItemCatalog(ItemCatalog itemCatalog) {
