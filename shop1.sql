@@ -13,6 +13,15 @@ create table users
 	user_pwd	varchar2(10)	not null,
 	user_name	varchar2(10)	not null
 )
+create table authorities
+(
+	user_id 	varchar2(10),
+	authority 	varchar2(10)
+)
+insert into authorities values('a','ROLE_USER')
+
+
+insert into users values('a','ROLE_USER','min');
 
 drop table order_list
 drop table order_detail

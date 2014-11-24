@@ -2,6 +2,8 @@ package exam.shop.controller;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,6 +19,8 @@ public class UserController
 {
 	@Autowired
 	private ShopService shopService;
+	
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	public void setShopService(ShopService shopService)
 	{
@@ -45,5 +49,18 @@ public class UserController
 			shopService.registerUser(user);
 			return "redirect:/listItem.shop";
 		}
+	}
+	@RequestMapping(value="/securityLoginUser.shop")
+	public String loginUser(ModelMap model)
+	{
+		logger.info("loger");
+		model.addAttribute("user", new User());
+		return "loginUser";
+				
+	}
+	@RequestMapping(value="/loginUserProcess.shop")
+	public void loginUserProcess()
+	{
+		logger.info("loger");				
 	}
 }
